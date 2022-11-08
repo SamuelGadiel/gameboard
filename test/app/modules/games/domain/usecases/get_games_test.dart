@@ -8,19 +8,19 @@ import 'package:mocktail/mocktail.dart';
 
 class _GetGamesRepositoryMock extends Mock implements GetGamesRepository {}
 
-class _GamesMock extends Fake implements Games {}
+class _GamesFake extends Fake implements Games {}
 
 void main() {
   final repository = _GetGamesRepositoryMock();
   final usecase = GetGamesImplementation(repository);
 
   setUp(() {
-    registerFallbackValue(_GamesMock());
+    registerFallbackValue(_GamesFake());
   });
 
-  group('Get Games -', () {
+  group('Get Games [Domain] -', () {
     test('Must return a Games list on success request', () async {
-      when(() => repository()).thenAnswer((invocation) async => Right(_GamesMock()));
+      when(() => repository()).thenAnswer((invocation) async => Right(_GamesFake()));
 
       final result = await usecase();
 
