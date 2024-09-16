@@ -1,0 +1,1 @@
+class GetGamesInitialState implements Get
